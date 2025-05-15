@@ -12,6 +12,10 @@
     <modules>
         <module>Core</module>
         <module>Common</module>
+        <module>CommonPlayer</module>
+        <module>Player</module>
+        <module>InputSystem</module>
+        <module>CommonInputSystem</module>
     </modules>
 
     <properties>
