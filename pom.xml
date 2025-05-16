@@ -16,6 +16,10 @@
         <module>Player</module>
         <module>InputSystem</module>
         <module>CommonInputSystem</module>
+        <module>CommonBullet</module>
+        <module>Weapon</module>
+        <module>CommonWeapon</module>
+        <module>Bullet</module>
     </modules>
 
     <properties>

@@ -74,7 +74,6 @@ public class Entity {
             this.width = (int) this.image.getWidth();
             this.height = (int) this.image.getHeight();
             this.spriteScale = spriteScale;
-            System.out.println(width + " " + height);
 
         } catch (NullPointerException e) {
             System.out.println("Image not found: " + image);

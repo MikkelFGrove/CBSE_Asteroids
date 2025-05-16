@@ -37,4 +37,16 @@ public class World {
     public void addEntity(Entity e) {
         entityMap.put(e.getUUID(), e);
     }
+
+    public void removeEntity(Entity entity) {
+        entityMap.remove(entity.getUUID());
+    }
+
+    public boolean isCoordOutsidePlayArea(double x, double y, GameData gameData) {
+        if (x > gameData.getWindowWidth() || x < 0 || y > gameData.getWindowHeight() || y < 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
