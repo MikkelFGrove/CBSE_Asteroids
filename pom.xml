@@ -20,6 +20,8 @@
         <module>Weapon</module>
         <module>CommonWeapon</module>
         <module>Bullet</module>
+        <module>CommonSpaceship</module>
+        <module>Spaceship</module>
     </modules>
 
     <properties>

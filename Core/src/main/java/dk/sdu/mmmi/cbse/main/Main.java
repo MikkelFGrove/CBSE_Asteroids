@@ -2,13 +2,17 @@ package dk.sdu.mmmi.cbse.main;
 
 import dk.sdu.mmmi.cbse.common.*;
 import dk.sdu.mmmi.cbse.common.inputSystem.IInputSPI;
+import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class Main extends Application {
     private final Pane game = new Pane();
@@ -43,7 +47,20 @@ public class Main extends Application {
     }
 
     private void startGame() {
-        renderCycle();
+        final double targetFPS = 120;
+        final double interval = 1000 / targetFPS; // milliseconds
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(interval), event -> {
+            gameData.getInputs().update();
+
+            for (IEntityProcessingService processingService : ModuleConfig.getEntityProcessingServices()) {
+                processingService.process(gameData, world);
+            }
+
+            renderGraphics();
+        }));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }
 
     private void renderCycle() {
@@ -64,15 +81,17 @@ public class Main extends Application {
 
         for (Entity entity : world.getEntities()) {
             gc.save();
-
-            // Move origin to the center of the entity
-
             double centerX = entity.getX() + entity.getWidth()/2d;
             double centerY = entity.getY() + entity.getHeight()/2d;
             gc.translate(centerX, centerY);
+            // Move origin to the center of the entity
+            if (entity.getEntityType() == EEntityTypes.PLAYER) {
+                gc.rotate(-entity.getRotation());
+            }
+
 
             // Rotate around the new origin (which is now the entity center)
-            gc.rotate(-entity.getRotation());
+
 
             // Draw image centered on the new origin
             gc.drawImage(

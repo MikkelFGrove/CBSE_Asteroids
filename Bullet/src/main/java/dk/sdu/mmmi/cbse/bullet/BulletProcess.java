@@ -12,7 +12,7 @@ public class BulletProcess implements IEntityProcessingService {
         for (Entity bullet : world.getEntities(Bullet.class)){
             double changeX = Math.sin(Math.toRadians(bullet.getRotation()));
             double changeY = Math.cos(Math.toRadians(bullet.getRotation()));
-            double speed = 2;
+            double speed = 3.3;
             bullet.setX(bullet.getX() + changeX * speed);
             bullet.setY(bullet.getY() + changeY * speed);
 

@@ -8,6 +8,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class World {
     private final Map<String, Entity> entityMap = new ConcurrentHashMap<>();
+    private double playerXPos = 0;
+    private double playerYPos = 0;
 
     public <E extends Entity> List<Entity> getEntities(Class<E>... entityTypes) {
         List<Entity> r = new ArrayList<>();
@@ -48,5 +50,21 @@ public class World {
         } else {
             return false;
         }
+    }
+
+    public double getPlayerXPos() {
+        return playerXPos;
+    }
+
+    public double getPlayerYPos() {
+        return playerYPos;
+    }
+
+    public void setPlayerXPos(double playerXPos) {
+        this.playerXPos = playerXPos;
+    }
+
+    public void setPlayerYPos(double playerYPos) {
+        this.playerYPos = playerYPos;
     }
 }

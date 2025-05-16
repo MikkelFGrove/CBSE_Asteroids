@@ -13,6 +13,8 @@
     <file url="file://$PROJECT_DIR$/CommonInputSystem/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonPlayer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonPlayer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonSpaceship/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CommonSpaceship/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonWeapon/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/CommonWeapon/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Core/src/main/java" charset="UTF-8" />
@@ -21,6 +23,8 @@
     <file url="file://$PROJECT_DIR$/InputSystem/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Player/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Player/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Spaceship/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Spaceship/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Weapon/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Weapon/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
