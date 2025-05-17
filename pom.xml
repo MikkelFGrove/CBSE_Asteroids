@@ -22,6 +22,7 @@
         <module>Bullet</module>
         <module>CommonSpaceship</module>
         <module>Spaceship</module>
+        <module>CollisionSystem</module>
     </modules>
 
     <properties>
@@ -93,7 +94,7 @@
                         in "java.lang.module.FindException: Module monitor.observer.zero not found";
                         strange... -->
 
-                        <!--                        <argument>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=127.0.0.1:8001</argument>-->
+                                              <!-- <argument>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=127.0.0.1:8001</argument>-->
 
                         <argument>--module=Core/dk.sdu.mmmi.cbse.main.Main</argument>
                         <argument>--add-modules javafx.graphics</argument>

@@ -2,6 +2,7 @@ package dk.sdu.mmmi.cbse.main;
 
 import dk.sdu.mmmi.cbse.common.*;
 import dk.sdu.mmmi.cbse.common.inputSystem.IInputSPI;
+import dk.sdu.mmmi.cbse.common.player.Player;
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
@@ -11,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -80,20 +82,28 @@ public class Main extends Application {
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
         for (Entity entity : world.getEntities()) {
+
+
+            double circleDiameter = 2 * entity.getSize();
+
+
+
+
+
+
+
+
+
+
+
+
             gc.save();
-            double centerX = entity.getX() + entity.getWidth()/2d;
-            double centerY = entity.getY() + entity.getHeight()/2d;
+            double centerX = entity.getX() /*+ entity.getWidth()/2d*/;
+            double centerY = entity.getY() /*+ entity.getHeight()/2d*/;
             gc.translate(centerX, centerY);
-            // Move origin to the center of the entity
             if (entity.getEntityType() == EEntityTypes.PLAYER) {
                 gc.rotate(-entity.getRotation());
             }
-
-
-            // Rotate around the new origin (which is now the entity center)
-
-
-            // Draw image centered on the new origin
             gc.drawImage(
                     entity.getImage(),
                     -entity.getWidth() / 2.0,
@@ -101,6 +111,8 @@ public class Main extends Application {
             );
 
             gc.restore();
+            gc.setFill(Color.RED);
+            gc.fillOval(entity.getX() - circleDiameter /2d, entity.getY()- circleDiameter /2d, circleDiameter, circleDiameter);
         }
     }
 }

@@ -15,6 +15,9 @@ public class SpaceshipProcess implements IEntityProcessingService {
         double moveSpeed = 0.6;
         for (Entity e : world.getEntities(Spaceship.class)) {
             if (e instanceof Spaceship spaceship) {
+                if(((Spaceship) e).getHealth() <= 0) {
+                    world.removeEntity(spaceship);
+                }
                 if (System.currentTimeMillis() - spaceship.getTimeSinceMoved() > 5000) {
                     if (rand.nextInt(100) == 0) {
                         float randomRotation = rand.nextFloat() * 360f;
@@ -24,7 +27,7 @@ public class SpaceshipProcess implements IEntityProcessingService {
                 }
 
                 if (rand.nextInt(50) == 0){
-                    spaceship.getIweapon().trigger(spaceship.getX() +spaceship.getWidth()/2d, spaceship.getY()+spaceship.getHeight()/2d, spaceship.getRotation(), gameData, world);
+                    spaceship.getIweapon().trigger(spaceship.getX(), spaceship.getY(), spaceship.getRotation(), gameData, world);
                 }
 
                 double changeX = Math.sin(Math.toRadians(e.getRotation())) * moveSpeed;

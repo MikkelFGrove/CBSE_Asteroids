@@ -10,6 +10,9 @@ public class PlayerControlSystem implements IEntityProcessingService {
         for (Entity player : world.getEntities(Player.class)) {
             double moveSpeed = 1.1;
             EInputTypes[] directions = { EInputTypes.UP, EInputTypes.LEFT, EInputTypes.RIGHT, EInputTypes.SHOOT };
+            if (((Player)player).getHealth() <= 0){
+                System.exit(1);
+            }
             for (EInputTypes input : directions) {
                 if (gameData.getInputs().isDown(input)) {
                     switch (input) {
@@ -33,7 +36,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
                             break;
                         case SHOOT:
                             Player playerEntity = (Player) player;
-                            playerEntity.getIweapon().trigger(player.getX() + player.getWidth()/2d, player.getY()+player.getHeight()/2d, player.getRotation(), gameData, world);
+                            playerEntity.getIweapon().trigger(player.getX(), player.getY(), player.getRotation(), gameData, world);
 
                     }
                     world.setPlayerXPos(player.getX());

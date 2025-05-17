@@ -10,6 +10,7 @@ public class Entity {
     private EEntityTypes entityType;
     private Image image;
     private double x, y;
+    private double size;
 
     public double getY() {
         return y;
@@ -109,4 +110,10 @@ public class Entity {
     }
 
 
+    public double getSize() {
+        return size;
+    }
+    public void setSize(double size) {
+        this.size = size;
+    }
 }

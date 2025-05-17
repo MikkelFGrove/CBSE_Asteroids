@@ -14,7 +14,6 @@ import static java.util.stream.Collectors.toList;
 public class SpaceshipPlugin implements IGamePluginService, ISpaceship {
     @Override
     public void start(GameData gameData, World world) {
-        System.out.println("Spaceship Plugin started");
         world.addEntity(createSpaceship(gameData, world));
     }
 
@@ -29,6 +28,8 @@ public class SpaceshipPlugin implements IGamePluginService, ISpaceship {
         spaceship.setEntityType(EEntityTypes.SPACESHIP);
         spaceship.setRotation(0);
         spaceship.setSprite("spaceship.png", 0.1);
+        spaceship.setSize(10);
+        spaceship.setHealth(50);
 
         double playerX = world.getPlayerXPos();
         double playerY = world.getPlayerYPos();
@@ -47,8 +48,6 @@ public class SpaceshipPlugin implements IGamePluginService, ISpaceship {
 
         spaceship.setX(x);
         spaceship.setY(y);
-
-        System.out.println(x + " " + y);
         getWeaponSPI().stream().findFirst().ifPresent(spaceship::setIweapon);
 
         return spaceship;

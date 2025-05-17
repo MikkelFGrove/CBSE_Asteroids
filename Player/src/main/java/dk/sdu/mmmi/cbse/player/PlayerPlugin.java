@@ -18,9 +18,11 @@ public class PlayerPlugin implements IGamePluginService {
         player.setRotation(180);
         player.setSprite("player.png", 0.07);
         player.setSpriteScale(1);
+        player.setSize(6);
         player.setX(gameData.getWindowWidth()/2d);
         player.setY(gameData.getWindowHeight()/2d);
         getWeaponSPI().stream().findFirst().ifPresent(player::setIweapon);
+        player.setHealth(100);
         world.addEntity(player);
     }
 
