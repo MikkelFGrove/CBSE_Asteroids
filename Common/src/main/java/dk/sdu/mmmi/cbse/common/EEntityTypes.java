@@ -4,5 +4,5 @@ public enum EEntityTypes {
     PLAYER,
     SPACESHIP,
     ASTEROID,
-BULLET
+    BULLET
 }

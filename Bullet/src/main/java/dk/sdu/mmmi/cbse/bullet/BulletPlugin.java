@@ -17,13 +17,14 @@ public class BulletPlugin implements IGamePluginService, IBulletSPI {
     }
 
     @Override
-    public Bullet createBullet(double x, double y, double angle, double damage) {
+    public Bullet createBullet(Entity e, double x, double y, double angle, double damage) {
         Bullet bullet = new Bullet();
         bullet.setEntityType(EEntityTypes.BULLET);
         bullet.setSprite("bullet.png", 0.006);
         bullet.setRotation(angle);
         bullet.setDamage(damage);
         bullet.setSize(1);
+        bullet.setOwner(e);
 
         double spawnOffset = 15;
 

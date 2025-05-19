@@ -7,6 +7,12 @@ public class GameData {
     private final GameInputs inputs = new GameInputs();
     private double mouseX, mouseY;
 
+    public int getAsteroidsKilled() {
+        return asteroidsKilled;
+    }
+
+    private int asteroidsKilled = 0;
+
     public int getWindowHeight() {
         return windowHeight;
     }
@@ -40,4 +46,7 @@ public class GameData {
     }
 
 
+    public void incrementAsteroidsKilled(int i) {
+        asteroidsKilled += i;
+    }
 }

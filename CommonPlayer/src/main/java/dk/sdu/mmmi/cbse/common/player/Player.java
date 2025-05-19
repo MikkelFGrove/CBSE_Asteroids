@@ -5,6 +5,15 @@ import dk.sdu.mmmi.cbse.common.weapon.IWeaponSPI;
 
 public class Player extends Entity {
     private double health;
+    double damage;
+
+    public double getDamage() {
+        return damage;
+    }
+
+    public void setDamage(double damage) {
+        this.damage = damage;
+    }
 
     public double getHealth() {
         return health;
@@ -15,7 +24,6 @@ public class Player extends Entity {
     }
 
     public void decreaseHealth(double health) {
-        System.out.println(health);
         this.health -= health;
     }
 

@@ -1,5 +1,6 @@
 package dk.sdu.mmmi.cbse.weapon;
 
+import dk.sdu.mmmi.cbse.common.Entity;
 import dk.sdu.mmmi.cbse.common.GameData;
 import dk.sdu.mmmi.cbse.common.World;
 import dk.sdu.mmmi.cbse.common.bullet.IBulletSPI;
@@ -16,9 +17,9 @@ public class Rifle implements IWeaponSPI {
     private final double DAMAGE = 10;
 
     @Override
-    public void trigger(double x, double y, double angle, GameData gameData, World world) {
+    public void trigger(Entity e, double x, double y, double angle, GameData gameData, World world) {
         if (System.currentTimeMillis() - lastShotTime > FIRERATE) {
-                getBulletSpi().stream().findFirst().ifPresent(bulletSpi -> {world.addEntity(bulletSpi.createBullet(x,y,angle,DAMAGE));});
+                getBulletSpi().stream().findFirst().ifPresent(bulletSpi -> {world.addEntity(bulletSpi.createBullet(e,x,y,angle,DAMAGE));});
                 lastShotTime = System.currentTimeMillis();
         }
     }

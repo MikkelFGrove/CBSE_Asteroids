@@ -23,6 +23,8 @@
         <module>CommonSpaceship</module>
         <module>Spaceship</module>
         <module>CollisionSystem</module>
+        <module>CommonAsteroid</module>
+        <module>Asteroid</module>
     </modules>
 
     <properties>

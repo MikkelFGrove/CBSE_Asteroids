@@ -23,6 +23,7 @@ public class PlayerPlugin implements IGamePluginService {
         player.setY(gameData.getWindowHeight()/2d);
         getWeaponSPI().stream().findFirst().ifPresent(player::setIweapon);
         player.setHealth(100);
+        player.setDamage(20);
         world.addEntity(player);
     }
 
