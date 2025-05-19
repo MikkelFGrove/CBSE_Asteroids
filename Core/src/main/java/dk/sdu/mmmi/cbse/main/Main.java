@@ -7,6 +7,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -15,6 +16,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+
+import java.util.Collection;
+import java.util.List;
+
 
 public class Main extends Application {
     private final Pane game = new Pane();
@@ -24,31 +32,22 @@ public class Main extends Application {
     GraphicsContext gc = canvas.getGraphicsContext2D();
     private final Label asteroidKillLabel = new Label("Asteroids killed: 0");
 
+    private Collection<IEntityProcessingService> entityProcessingServices;
+    private Collection<IPostEntityProcessorService> postEntityProcessorServices;
+    private Collection<IGamePluginService> gamePluginServices;
+
+
+
     public static void main(String[] args) {
         launch(Main.class);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        Scene scene = new Scene(game, gameData.getWindowHeight(), gameData.getWindowWidth());
-        for (IGamePluginService iGamePlugin : ModuleConfig.getPlugins()) {
-            iGamePlugin.start(gameData, world);
-        }
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(SpringConfig.class);
+        GameManager gameManager = ctx.getBean(GameManager.class);
+        Scene scene = gameManager.initGameScene();
 
-        for (IInputSPI iInputSPI : ModuleConfig.getInputSystem()) {
-            scene.addEventHandler(iInputSPI.getInputEvent(), iInputSPI.getInputHandler(gameData));
-        }
-
-        gc.setImageSmoothing(true);
-        game.getChildren().add(canvas);
-
-        asteroidKillLabel.setTextFill(Color.BLACK);
-        asteroidKillLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
-        asteroidKillLabel.setTranslateX(10);
-        asteroidKillLabel.setTranslateY(10);
-        game.getChildren().add(asteroidKillLabel);
-
-        startGame();
         stage.setScene(scene);
         stage.setTitle("ASTEROIDS!!!");
         stage.show();
@@ -61,10 +60,10 @@ public class Main extends Application {
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(interval), event -> {
             gameData.getInputs().update();
 
-            for (IEntityProcessingService processingService : ModuleConfig.getEntityProcessingServices()) {
+            for (IEntityProcessingService processingService : entityProcessingServices) {
                 processingService.process(gameData, world);
             }
-            for (IPostEntityProcessorService postProcessingService : ModuleConfig.getIPostEntityProcessorService()) {
+            for (IPostEntityProcessorService postProcessingService : postEntityProcessorServices) {
                 postProcessingService.process(gameData, world);
             }
 
