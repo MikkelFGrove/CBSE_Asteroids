@@ -7,7 +7,6 @@ import dk.sdu.mmmi.cbse.common.player.Player;
 import dk.sdu.mmmi.cbse.common.spaceship.Spaceship;
 
 
-
 public class CollisionDetector implements IPostEntityProcessorService {
     @Override
     public void process(GameData gameData, World world) {
@@ -49,4 +48,6 @@ public class CollisionDetector implements IPostEntityProcessorService {
             }
         }
     }
+
+
 }

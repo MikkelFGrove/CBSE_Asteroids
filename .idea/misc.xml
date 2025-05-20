@@ -5,11 +5,14 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/ScoringSystem/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/CommonEntity/pom.xml" />
+        <option value="$PROJECT_DIR$/ScoreUpdater/pom.xml" />
+        <option value="$PROJECT_DIR$/ScoringUpdater/pom.xml" />
       </set>
     </option>
   </component>
