@@ -6,13 +6,21 @@ import dk.sdu.mmmi.cbse.common.IGamePluginService;
 import dk.sdu.mmmi.cbse.common.World;
 import dk.sdu.mmmi.cbse.common.asteroid.Asteroid;
 import dk.sdu.mmmi.cbse.common.asteroid.EAsteroidStage;
+import javafx.scene.image.Image;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class AsteroidPlugin implements IGamePluginService {
+    Image asteroidSprite = null;
+
     @Override
     public void start(GameData gameData, World world) {
         Random rand = new Random();
+
+        asteroidSprite = new Image(
+                Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("asteroid.png"))
+        );
 
         for (int i = 0; i <= 20; i++) {
 
@@ -49,19 +57,20 @@ public class AsteroidPlugin implements IGamePluginService {
 
         asteroid.setRotation(entityRotation);
         asteroid.setSpriteRotation(spriteRotation);
-
-        /*float minScale = 0.03f;
-        float maxScale = 0.09f;
-        float randomScale = minScale + rand.nextFloat() * (maxScale - minScale);
-
-        asteroid.setSprite("asteroid.png", size);
-
-        int size = Math.round(randomScale * 400);*/
         asteroid.setHealth(health);
         double minScale = 0.03f;
         double maxScale = 0.09f;
         double size = minScale + ((health - 1) / 99.0f) * (maxScale - minScale);
-        asteroid.setSprite("asteroid.png", size);
+
+        if (asteroidSprite != null) {
+            double scaledWidth = asteroidSprite.getWidth() * size;
+            double scaledHeight = asteroidSprite.getHeight() * size;
+            Image newAsteroidSprite = new Image("asteroid.png", scaledWidth, scaledHeight, true, false);
+            asteroid.setSprite(newAsteroidSprite);
+        } else {
+            asteroid.setSprite("asteroid.png", size);
+        }
+
         asteroid.setSize(size*400);
 
         if (health >= 81 && health <= 100) {

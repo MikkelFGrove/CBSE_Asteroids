@@ -11,7 +11,7 @@ public class PlayerControlSystem implements IEntityProcessingService {
             double moveSpeed = 1.1;
             EInputTypes[] directions = { EInputTypes.UP, EInputTypes.LEFT, EInputTypes.RIGHT, EInputTypes.SHOOT };
             if (((Player)player).getHealth() <= 0){
-                System.exit(1);
+                world.removeEntity(player);
             }
             for (EInputTypes input : directions) {
                 if (gameData.getInputs().isDown(input)) {

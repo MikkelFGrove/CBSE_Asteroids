@@ -68,8 +68,8 @@ public class Entity {
                     Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream(image)),
                     scaledWidth,
                     scaledHeight,
-                    true,  // preserve ratio
-                    false  // don't smooth if pixel-perfect style is needed
+                    true,
+                    false
             );
 
             this.width = (int) this.image.getWidth();
@@ -79,6 +79,11 @@ public class Entity {
         } catch (NullPointerException e) {
             System.out.println("Image not found: " + image);
         }
+    }
+
+    public void setSprite(Image image) {
+
+        this.image = image;
     }
 
     public Image getImage() {

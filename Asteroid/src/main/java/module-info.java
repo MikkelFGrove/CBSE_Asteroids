@@ -8,6 +8,7 @@ import dk.sdu.mmmi.cbse.common.IPostEntityProcessorService;
 module Asteroid {
     requires CommonAsteroid;
     requires Common;
+    requires javafx.graphics;
 
     provides IGamePluginService with AsteroidPlugin;
     provides IEntityProcessingService with AsteroidProcess;
