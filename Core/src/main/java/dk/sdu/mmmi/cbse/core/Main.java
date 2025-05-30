@@ -1,4 +1,4 @@
-package dk.sdu.mmmi.cbse.main;
+package dk.sdu.mmmi.cbse.core;
 
 import dk.sdu.mmmi.cbse.common.*;
 import dk.sdu.mmmi.cbse.common.asteroid.Asteroid;

@@ -1,7 +1,6 @@
 package dk.sdu.mmmi.cbse.spaceship;
 
 import dk.sdu.mmmi.cbse.common.*;
-import dk.sdu.mmmi.cbse.common.spaceship.ISpaceship;
 import dk.sdu.mmmi.cbse.common.spaceship.Spaceship;
 import dk.sdu.mmmi.cbse.common.weapon.IWeaponSPI;
 
@@ -11,7 +10,7 @@ import java.util.ServiceLoader;
 
 import static java.util.stream.Collectors.toList;
 
-public class SpaceshipPlugin implements IGamePluginService, ISpaceship {
+public class SpaceshipPlugin implements IGamePluginService{
     @Override
     public void start(GameData gameData, World world) {
         world.addEntity(createSpaceship(gameData, world));
@@ -22,7 +21,6 @@ public class SpaceshipPlugin implements IGamePluginService, ISpaceship {
 
     }
 
-    @Override
     public Entity createSpaceship(GameData gameData, World world) {
         Spaceship spaceship = new Spaceship();
         spaceship.setEntityType(EEntityTypes.SPACESHIP);

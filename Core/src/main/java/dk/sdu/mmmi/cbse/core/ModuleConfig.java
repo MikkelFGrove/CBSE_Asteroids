@@ -1,4 +1,4 @@
-package dk.sdu.mmmi.cbse.main;
+package dk.sdu.mmmi.cbse.core;
 
 import dk.sdu.mmmi.cbse.common.IEntityProcessingService;
 import dk.sdu.mmmi.cbse.common.IPostEntityProcessorService;
@@ -7,7 +7,6 @@ import dk.sdu.mmmi.cbse.common.inputSystem.IInputSPI;
 
 import java.util.Collection;
 import java.util.ServiceLoader;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 

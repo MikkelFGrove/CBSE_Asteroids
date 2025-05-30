@@ -6,7 +6,7 @@ module Core {
     requires CommonAsteroid;
     requires Common;
     requires javafx.controls;
-    opens dk.sdu.mmmi.cbse.main to javafx.graphics;
+    opens dk.sdu.mmmi.cbse.core to javafx.graphics;
 
     uses dk.sdu.mmmi.cbse.common.IEntityProcessingService;
     uses dk.sdu.mmmi.cbse.common.IGamePluginService;

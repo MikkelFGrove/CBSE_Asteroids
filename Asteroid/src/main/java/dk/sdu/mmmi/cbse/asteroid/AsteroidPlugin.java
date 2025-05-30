@@ -12,7 +12,7 @@ import java.util.Objects;
 import java.util.Random;
 
 public class AsteroidPlugin implements IGamePluginService {
-    Image asteroidSprite = null;
+    private Image asteroidSprite = null;
 
     @Override
     public void start(GameData gameData, World world) {
@@ -62,14 +62,7 @@ public class AsteroidPlugin implements IGamePluginService {
         double maxScale = 0.09f;
         double size = minScale + ((health - 1) / 99.0f) * (maxScale - minScale);
 
-        if (asteroidSprite != null) {
-            double scaledWidth = asteroidSprite.getWidth() * size;
-            double scaledHeight = asteroidSprite.getHeight() * size;
-            Image newAsteroidSprite = new Image("asteroid.png", scaledWidth, scaledHeight, true, false);
-            asteroid.setSprite(newAsteroidSprite);
-        } else {
-            asteroid.setSprite("asteroid.png", size);
-        }
+        asteroid.setSprite("asteroid.png", size);
 
         asteroid.setSize(size*400);
 

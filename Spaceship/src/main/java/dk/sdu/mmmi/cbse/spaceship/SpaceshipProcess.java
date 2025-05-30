@@ -26,8 +26,10 @@ public class SpaceshipProcess implements IEntityProcessingService {
                     }
                 }
 
-                if (rand.nextInt(50) == 0){
-                    spaceship.getIweapon().trigger(spaceship, spaceship.getX(), spaceship.getY(), spaceship.getRotation(), gameData, world);
+                if(spaceship.getIweapon() != null){
+                    if (rand.nextInt(50) == 0){
+                        spaceship.getIweapon().trigger(spaceship, spaceship.getX(), spaceship.getY(), spaceship.getRotation(), world);
+                    }
                 }
 
                 double changeX = Math.sin(Math.toRadians(e.getRotation())) * moveSpeed;

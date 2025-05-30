@@ -36,7 +36,10 @@ public class PlayerControlSystem implements IEntityProcessingService {
                             break;
                         case SHOOT:
                             Player playerEntity = (Player) player;
-                            playerEntity.getIweapon().trigger(player ,player.getX(), player.getY(), player.getRotation(), gameData, world);
+                            if (playerEntity.getIweapon() != null) {
+                                playerEntity.getIweapon().trigger(player ,player.getX(), player.getY(), player.getRotation(), world);
+                            }
+
 
                     }
                     world.setPlayerXPos(player.getX());

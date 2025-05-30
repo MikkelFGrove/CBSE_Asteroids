@@ -17,7 +17,7 @@ public class Rifle implements IWeaponSPI {
     private final double DAMAGE = 10;
 
     @Override
-    public void trigger(Entity e, double x, double y, double angle, GameData gameData, World world) {
+    public void trigger(Entity e, double x, double y, double angle, World world) {
         if (System.currentTimeMillis() - lastShotTime > FIRERATE) {
                 getBulletSpi().stream().findFirst().ifPresent(bulletSpi -> {world.addEntity(bulletSpi.createBullet(e,x,y,angle,DAMAGE));});
                 lastShotTime = System.currentTimeMillis();
